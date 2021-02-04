@@ -41,5 +41,7 @@ def delete_a_user(user_id):
     return requests.delete(BASE_URL+DELETE_A_USER_URL+str(user_id))
 
 
+#PUT USER METHODS
+
 
 
