@@ -2,6 +2,8 @@ from helper import *
 from user_services import *
 
 
+
+
 def test_create_new_user():
     excepted_status_code=201
     print("\nThe test_create_new_user start")
