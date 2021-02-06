@@ -12,6 +12,10 @@ GET_SINGLE_USER_NOT_FOUND_URL="/api/users/"
 POST_CREATE_USER_URL="/api/users"
 #DELETE URL
 DELETE_A_USER_URL="/api/users/"
+#PUT URL
+UPDATE_USER_INFO="/api/users/"
+
+
 
 #GET  USERS METHODS
 
@@ -44,6 +48,8 @@ def delete_a_user(user_id):
 
 
 #PUT USER METHODS
-
+def update_user_info(user_data,user_id):
+    json_content = json.loads(user_data)
+    return requests.post(BASE_URL+UPDATE_USER_INFO+str(user_id), json_content)
 
 
