@@ -34,6 +34,8 @@ def create_new_user(new_user_data):
     json_content = json.loads(new_user_data)
     return requests.post(BASE_URL+POST_CREATE_USER_URL, json_content)
 
+
+
 #DELETE USER METHODS
 
 #DELETE A USER
