@@ -10,12 +10,11 @@ import json
 from user_services import *
 from helper import *
 
-BASE_URL = "https://reqres.in"
-GET_USERS_LIST_URL = "/api/users?page="
+from http_code import *
 
 
 def test_get_users_list():
-    excepted_status_code = 200
+    excepted_status_code = HTTP_OK
     print("\nThe test_get_users_list start")
     users, response = get_list_of_users()
     expected_user_count = len(users)
@@ -30,28 +29,28 @@ def test_get_users_list():
     print("\nThe test_get_users_list over")
 
 #
-# def test_get_single_user():
-#     user_id = 2
-#     excepted_status_code = 200
-#     print("\nThe test_get_single_user start")
-#     response = get_single_user(user_id)
-#     print("\nThe response have been return")
-#     json_text = json.loads(response.text)
-#     data = jsonpath(json_text, 'data')
-#     print data[0]
-#     print("\nThe expected status code is " + str(excepted_status_code))
-#     print("\nThe real status code is " + str(response.status_code))
-#     assert response.status_code == excepted_status_code
-#     print("\nThe test_get_single_user over")
+def test_get_single_user():
+    user_id = 2
+    excepted_status_code = HTTP_OK
+    print("\nThe test_get_single_user start")
+    response = get_single_user(user_id)
+    print("\nThe response have been return")
+    json_text = json.loads(response.text)
+    data = jsonpath(json_text, 'data')
+    print data[0]
+    print("\nThe expected status code is " + str(excepted_status_code))
+    print("\nThe real status code is " + str(response.status_code))
+    assert response.status_code == excepted_status_code
+    print("\nThe test_get_single_user over")
+
 #
 #
-# #
-# def test_get_single_user_not_found():
-#     user_id = 23
-#     excepted_status_code = 404
-#     print("\nThe test_get_single_user_not_found start")
-#     response = get_single_user(user_id)
-#     print("\nThe expected status code is " + str(excepted_status_code))
-#     print("\nThe real status code is " + str(response.status_code))
-#     assert response.status_code == excepted_status_code
-#     print("\nThe test_get_single_user_not_found over")
+def test_get_single_user_not_found():
+    user_id = 23
+    excepted_status_code = HTTP_NOT_FOUND
+    print("\nThe test_get_single_user_not_found start")
+    response = get_single_user(user_id)
+    print("\nThe expected status code is " + str(excepted_status_code))
+    print("\nThe real status code is " + str(response.status_code))
+    assert response.status_code == excepted_status_code
+    print("\nThe test_get_single_user_not_found over")

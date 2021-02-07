@@ -1,9 +1,10 @@
 from helper import *
 from user_services import *
+from http_code import *
 
 
 def test_update_user_info():
-    excepted_status_code = 201
+    excepted_status_code = HTTP_CREATED_SUCCESS
     user_id = 2
     print("\nThe test_update_user_info start")
     file_name = 'updateUserInfo.json'

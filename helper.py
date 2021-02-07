@@ -18,24 +18,26 @@ def read_file(file_name):
     return file.read()
 
 
-def get_list_of_users():
-    page = 1
-    all_users = []
+def get_user_info(page):
     response = get_users_list(page)
     json_text = json.loads(response.text)
     data = jsonpath(json_text, 'data')
-    total_users = jsonpath(json_text, 'total')
+    return data, response
+
+
+def get_list_of_users():
+    page = 1
+    all_users = []
+    data, response = get_user_info(page)
     while len(data[0]) > 0:
         all_users = all_users + data[0]
         page = page + 1
-        response = requests.get(BASE_URL + GET_USERS_LIST_URL + str(page))
-        json_text = json.loads(response.text)
-        data = jsonpath(json_text, 'data')
+        data = get_user_info(page)
     list = store_user_info(all_users)
     return list, response
 
 
-def create_A_user(file_name):
+def create_user(file_name):
     file_content = read_file(file_name)
     return create_new_user(file_content)
 
